@@ -44,6 +44,11 @@
 		"tuple": "cpp",
 		"typeinfo": "cpp",
 		"utility": "cpp",
-		"charconv": "cpp"
+		"charconv": "cpp",
+		"cstdarg": "cpp",
+		"cstddef": "cpp",
+		"memory_resource": "cpp",
+		"random": "cpp",
+		"cinttypes": "cpp"
 	}
 }
