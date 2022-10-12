@@ -49,6 +49,10 @@
 		"cstddef": "cpp",
 		"memory_resource": "cpp",
 		"random": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"atomic": "cpp",
+		"algorithm": "cpp",
+		"iterator": "cpp",
+		"numeric": "cpp"
 	}
 }

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <math.h>
-::std::ifstream touchEvent("/dev/input/event1", ::std::ios::binary | std::ios::in);
+::std::ifstream touchEvent("/dev/input/event8", ::std::ios::binary | std::ios::in);
 
 class BinaryByte {
 	public:
@@ -42,6 +42,8 @@ class BinaryByte {
 int main () {
 	int i;
 	::std::string bytes[24];
+	int cursorx;
+	int cursory;
 	while(true) {
 		char x;
 		touchEvent.get(x);
@@ -49,15 +51,35 @@ int main () {
 		bytes[i] = num.toStr();
 		i++;
 		if(i >= 24) {
-			for (auto byte : bytes) ::std::cout << byte << ::std::endl;
 			long seconds = stol(bytes[7] + bytes[6] + bytes[5] + bytes[4] + bytes[3] + bytes[2] + bytes[1] + bytes[0], nullptr, 2);
-			long microseconds;
-			ushort type;
-			ushort code;
-			uint value;
-			::std::cout << bytes[3] + bytes[2] + bytes[1] + bytes[0] << ::std::endl;
-			::std::cout << "unix timestamp: " << seconds << ::std::endl;
-			::std::cout << "====================" << ::std::endl;
+			long microseconds = stol(bytes[15] + bytes[14] + bytes[13] + bytes[12] + bytes[11] + bytes[10] + bytes[9] + bytes[8], nullptr, 2);
+			ushort type = stoul(bytes[17] + bytes[16], nullptr, 2);
+			ushort code = stoul(bytes[19] + bytes[18], nullptr, 2);
+			uint value = stoul(bytes[23] + bytes[22] + bytes[21] + bytes[20], nullptr, 2);
+
+
+			//::std::cout << "unix timestamp: " << seconds << ::std::endl;
+			//::std::cout << "microseconds: " << microseconds << ::std::endl;
+			
+			switch (type)
+			{
+			case 0:
+				::std::cout << "type: " << "aaa		" << code << "		" << value << ::std::endl;
+				break;
+			case 1:
+				::std::cout << "type: " << "bbb		" << code << "		" << value << ::std::endl;
+				break;
+			case 3:
+				::std::cout << "type: " << "ccc		" << code << "		" << value << ::std::endl;
+				break;
+			
+			default:
+				::std::cout << "type: " << type << code << ::std::endl;
+			}
+
+			//::std::cout << "code: " << code << ::std::endl;
+			//::std::cout << "value: " << value << ::std::endl;
+			//::std::cout << "====================" << ::std::endl;
 			i = 0;
 		}
 	}
@@ -95,4 +117,32 @@ int main () {
 01100011
 
 01100101100000010100010101100011
+*/
+
+/*
+ras@pi:~/piBackLight $ touch
+type: ccc				57				165			|	start read (maybe counter)
+type: ccc				53				74			|	xpos_in
+type: ccc				54				48			|	ypos_in
+type: bbb				330				1			|	press
+type: ccc				0				74			|	xpos_in
+type: ccc				1				48			|	xpos_out
+type: aaa				0				0			|	release
+type: ccc				57				4294967295	|	end read
+type: bbb				330				0			|	end read
+type: aaa				0				0			|	end read
+^C
+ras@pi:~/piBackLight $ touch
+type: ccc				57				166			|	start read (maybe counter)
+type: ccc				53				734			|	xpos_in
+type: ccc				54				344			|	xpos_out
+type: bbb				330				1			|	press
+type: ccc				0				734			|	xpos_out
+type: ccc				1				344			|	ypos_out
+type: aaa				0				0			|	release
+type: ccc				57				4294967295	|	end read
+type: bbb				330				0			|	end read
+type: aaa				0				0			|	end read
+^C
+ras@pi:~/piBackLight $ 
 */
