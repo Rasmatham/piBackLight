@@ -1,9 +1,9 @@
 #include <fstream>
 #include <regex>
 #include <unistd.h>
-::std::fstream blPower("/sys/class/backlight/10-0045/bl_power");
-::std::fstream brightness("/sys/class/backlight/10-0045/brightness");
-::std::ifstream trueBrightness("/sys/class/backlight/10-0045/actual_brightness");
+::std::fstream blPower("/sys/devices/platform/soc/fe205000.i2c/i2c-22/i2c-10/10-0045/backlight/10-0045/bl_power");
+::std::fstream brightness("/sys/devices/platform/soc/fe205000.i2c/i2c-22/i2c-10/10-0045/backlight/10-0045/brightness");
+::std::ifstream trueBrightness("/sys/devices/platform/soc/fe205000.i2c/i2c-22/i2c-10/10-0045/backlight/10-0045/actual_brightness");
 void fade_in(int num = 255) {
 	::std::string currentState;
 	trueBrightness.seekg(0,::std::ios::beg);

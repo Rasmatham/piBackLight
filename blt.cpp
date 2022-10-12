@@ -1,6 +1,6 @@
 #include <fstream>
 #include <unistd.h>
-::std::fstream blPower("/sys/class/backlight/10-0045/bl_power");
+::std::fstream blPower("/sys/devices/platform/soc/fe205000.i2c/i2c-22/i2c-10/10-0045/backlight/10-0045/bl_power");
 void swapState() {
 	::std::string currentState;
 	while (getline (blPower, currentState)) {
