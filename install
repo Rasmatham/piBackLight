@@ -1,9 +1,9 @@
 #!/bin/bash
-g++ ${PWD}/blt.cpp -o /usr/local/bin/blt
-g++ ${PWD}/bs.cpp -o /usr/local/bin/bs
-g++ ${PWD}/fade.cpp -o /usr/local/bin/fade
-g++ ${PWD}/touchInput.cpp -o /usr/local/bin/touchInput
-g++ ${PWD}/touchInputLogger.cpp -o /usr/local/bin/touchInputLogger
+sudo g++ ${PWD}/blt.cpp -o /usr/local/bin/blt
+sudo g++ ${PWD}/bs.cpp -o /usr/local/bin/bs
+sudo g++ ${PWD}/fade.cpp -o /usr/local/bin/fade
+sudo g++ ${PWD}/touchInput.cpp -o /usr/local/bin/touchInput
+sudo g++ ${PWD}/touchInputLogger.cpp -o /usr/local/bin/touchInputLogger
 
 sudo systemctl disable SleepMode.service
 sudo systemctl stop SleepMode.service
