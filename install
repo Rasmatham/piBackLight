@@ -25,7 +25,7 @@ sudo rm /etc/systemd/system/SleepMode.service
 sudo mv ${PWD}/SleepMode.service /etc/systemd/system/SleepMode.service
 sudo systemctl enable SleepMode.service
 sudo systemctl start SleepMode.service
-export PATH="${PWD}:$PATH"
+sudo export PATH="${PWD}:$PATH"
 
 echo "#!/bin/bash
 sudo systemctl disable SleepMode.service
