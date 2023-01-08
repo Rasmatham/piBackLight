@@ -1,25 +1,25 @@
 #!/bin/bash
-g++ ./blt.cpp -o ./blt
-rm ./blt.cpp
+g++ ${PWD}/blt.cpp -o ${PWD}/blt
+rm ${PWD}/blt.cpp
 
-g++ ./bs.cpp -o ./bs
-rm ./bs.cpp
+g++ ${PWD}/bs.cpp -o ${PWD}/bs
+rm ${PWD}/bs.cpp
 
-g++ ./fade.cpp -o ./fade
-rm ./fade.cpp
+g++ ${PWD}/fade.cpp -o ${PWD}/fade
+rm ${PWD}/fade.cpp
 
-g++ ./touchInput.cpp -o ./touchInput
-rm ./touchInput.cpp
+g++ ${PWD}/touchInput.cpp -o ${PWD}/touchInput
+rm ${PWD}/touchInput.cpp
 
-g++ ./touchInputLogger.cpp -o ./touchInputLogger
-rm ./touchInputLogger.cpp
+g++ ${PWD}/touchInputLogger.cpp -o ${PWD}/touchInputLogger
+rm ${PWD}/touchInputLogger.cpp
 
-rm -rf ./.vscode
-rm -rf ./.git
-rm ./.gitignore
-rm ./.gitattributes
+rm -rf ${PWD}/.vscode
+rm -rf ${PWD}/.git
+rm ${PWD}/.gitignore
+rm ${PWD}/.gitattributes
 
-sudo mv ./SleepMode.service /etc/systemd/system/SleepMode.service
+sudo mv ${PWD}/SleepMode.service /etc/systemd/system/SleepMode.service
 sudo systemctl enable SleepMode.service
 sudo systemctl start SleepMode.service
 
@@ -27,8 +27,10 @@ echo "#!/bin/bash
 sudo systemctl disable SleepMode.service
 sudo systemctl stop SleepMode.service
 sudo rm /etc/systemd/system/SleepMode.service
+oldDir=${PWD}
 cd ..
-sudo rm -rf ./piBackLight
+sudo rm -rf $oldDir
 " > ./uninstall
-chmod +x ./uninstall
+chmod +x ./uninstallPiBackLight
+export PATH="${PWD}:$PATH"
 rm ./install
