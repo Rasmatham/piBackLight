@@ -30,7 +30,7 @@ sudo rm /etc/systemd/system/SleepMode.service
 oldDir=${PWD}
 cd ..
 sudo rm -rf $oldDir
-" > ./uninstall
+" > ./uninstallPiBackLight
 chmod +x ./uninstallPiBackLight
 export PATH="${PWD}:$PATH"
 rm ./install
