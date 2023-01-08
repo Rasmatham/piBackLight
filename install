@@ -19,6 +19,9 @@ rm -rf ${PWD}/.git
 rm ${PWD}/.gitignore
 rm ${PWD}/.gitattributes
 
+sudo systemctl disable SleepMode.service
+sudo systemctl stop SleepMode.service
+sudo rm /etc/systemd/system/SleepMode.service
 sudo mv ${PWD}/SleepMode.service /etc/systemd/system/SleepMode.service
 sudo systemctl enable SleepMode.service
 sudo systemctl start SleepMode.service
