@@ -1,14 +1,25 @@
 #!/bin/bash
-sudo g++ ${PWD}/blt.cpp -o /usr/local/bin/blt
-sudo g++ ${PWD}/bs.cpp -o /usr/local/bin/bs
-sudo g++ ${PWD}/fade.cpp -o /usr/local/bin/fade
-sudo g++ ${PWD}/touchInput.cpp -o /usr/local/bin/touchInput
-sudo g++ ${PWD}/touchInputLogger.cpp -o /usr/local/bin/touchInputLogger
+sudo g++ "${PWD}"/blt.cpp -o /usr/local/bin/blt
+sudo rm "${PWD}"/blt.cpp
+sudo g++ "${PWD}"/bs.cpp -o /usr/local/bin/bs
+sudo rm "${PWD}"/bs.cpp
+sudo g++ "${PWD}"/fade.cpp -o /usr/local/bin/fade
+sudo rm "${PWD}"/fade.cpp
+sudo g++ "${PWD}"/touchInput.cpp -o /usr/local/bin/touchInput
+sudo rm "${PWD}"/touchInput.cpp
+sudo g++ "${PWD}"/touchInputLogger.cpp -o /usr/local/bin/touchInputLogger
+sudo rm "${PWD}"/touchInputLogger.cpp
+
+rm -rf "${PWD}"/.git
+rm -rf "${PWD}"/.vscode
+rm "${PWD}"/.gitattributes
+rm "${PWD}"/.gitignore
+
 
 sudo systemctl disable SleepMode.service
 sudo systemctl stop SleepMode.service
 sudo rm /etc/systemd/system/SleepMode.service
-sudo mv ${PWD}/SleepMode.service /etc/systemd/system/SleepMode.service
+sudo mv "${PWD}"/SleepMode.service /etc/systemd/system/SleepMode.service
 sudo systemctl enable SleepMode.service
 sudo systemctl start SleepMode.service
 
@@ -21,9 +32,9 @@ sudo rm /usr/local/bin/bs
 sudo rm /usr/local/bin/fade
 sudo rm /usr/local/bin/touchInput
 sudo rm /usr/local/bin/touchInputLogger
-oldDir=\${PWD}
+oldDir=\"\${PWD}\"
 cd ..
 sudo rm -rf \$oldDir
 " > ./uninstallPiBackLight
 chmod +x ./uninstallPiBackLight
-rm -rf !("uninstallPiBackLight"|"LICENCE")
+rm "${PWD}"/install
