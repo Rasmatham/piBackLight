@@ -26,4 +26,4 @@ cd ..
 sudo rm -rf \$oldDir
 " > ./uninstallPiBackLight
 chmod +x ./uninstallPiBackLight
-rm -vrf !("uninstallPiBackLight"|"LICENCE")
+rm -rf !("uninstallPiBackLight"|"LICENCE")
