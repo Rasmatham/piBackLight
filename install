@@ -20,14 +20,15 @@ rm ./.gitignore
 rm ./.gitattributes
 
 sudo mv ./SleepMode.service /etc/systemd/system/SleepMode.service
-sudo systemctl enable tempService.service
-sudo systemctl start tempService.service
+sudo systemctl enable SleepMode.service
+sudo systemctl start SleepMode.service
 
 echo "#!/bin/bash
-sudo systemctl disable tempService.service
-sudo systemctl stop tempService.service
+sudo systemctl disable SleepMode.service
+sudo systemctl stop SleepMode.service
 sudo rm /etc/systemd/system/SleepMode.service
-sudo rm -rf ./
+cd ..
+sudo rm -rf ./piBackLight
 " > ./uninstall
 chmod +x ./uninstall
 rm ./install
