@@ -27,9 +27,9 @@ echo "#!/bin/bash
 sudo systemctl disable SleepMode.service
 sudo systemctl stop SleepMode.service
 sudo rm /etc/systemd/system/SleepMode.service
-oldDir=${PWD}
+oldDir=\${PWD}
 cd ..
-sudo rm -rf $oldDir
+sudo rm -rf \$oldDir
 " > ./uninstallPiBackLight
 chmod +x ./uninstallPiBackLight
 export PATH="${PWD}:$PATH"
