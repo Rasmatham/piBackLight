@@ -1,0 +1,33 @@
+#!/bin/bash
+g++ ./blt.cpp -o ./blt
+rm ./blt.cpp
+
+g++ ./bs.cpp -o ./bs
+rm ./bs.cpp
+
+g++ ./fade.cpp -o ./fade
+rm ./fade.cpp
+
+g++ ./touchInput.cpp -o ./touchInput
+rm ./touchInput.cpp
+
+g++ ./touchInputLogger.cpp -o ./touchInputLogger
+rm ./touchInputLogger.cpp
+
+rm -rf ./.vscode
+rm -rf ./.git
+rm ./.gitignore
+rm ./.gitattributes
+
+sudo mv ./SleepMode.service /etc/systemd/system/SleepMode.service
+sudo systemctl enable tempService.service
+sudo systemctl start tempService.service
+
+echo "#!/bin/bash
+sudo systemctl disable tempService.service
+sudo systemctl stop tempService.service
+sudo rm /etc/systemd/system/SleepMode.service
+sudo rm -rf ./
+" > ./uninstall
+chmod +x ./uninstall
+rm ./install
